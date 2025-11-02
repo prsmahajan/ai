@@ -5,27 +5,32 @@ import { featuredArticles } from '@/lib/featured-articles';
 
 export default function FeaturedSection() {
   return (
-    <section className="container mx-auto px-4 py-8">
+    <section className="container mx-auto px-4 py-6">
+      {/* Section Title */}
+      <h1 className="text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-6">
+        Technology
+      </h1>
+
       {/* Category Tabs */}
       <CategoryTabs />
 
       {/* Main Grid */}
-      <div className="grid grid-cols-12 gap-6">
+      <div className="grid grid-cols-12 gap-5">
 
-        {/* Left Column - 5 cols */}
-        <div className="col-span-12 lg:col-span-5 space-y-8">
+        {/* Left Column - 4 cols */}
+        <div className="col-span-12 lg:col-span-4 space-y-6">
           <FeaturedCard article={featuredArticles[0]} size="large" />
           <FeaturedCard article={featuredArticles[1]} size="large" />
         </div>
 
-        {/* Middle Column - 5 cols */}
-        <div className="col-span-12 lg:col-span-5 space-y-8">
+        {/* Middle Column - 4 cols */}
+        <div className="col-span-12 lg:col-span-4 space-y-6">
           <FeaturedCard article={featuredArticles[2]} size="large" />
           <FeaturedCard article={featuredArticles[3]} size="large" />
         </div>
 
-        {/* Right Sidebar - 2 cols */}
-        <div className="col-span-12 lg:col-span-2 space-y-6">
+        {/* Right Sidebar - 4 cols */}
+        <div className="col-span-12 lg:col-span-4 space-y-5">
           <AdvertorialBanner />
 
           {/* Podcast/Media Card */}
