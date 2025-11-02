@@ -84,6 +84,8 @@ export default function Header() {
   const [mounted, setMounted] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
+  const logoSrc = theme === 'dark' ? '/ai-l.png' : '/ai.png';
+
   // Format current date
   useEffect(() => {
     setMounted(true)
@@ -160,11 +162,11 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
               <Image
-                src="/ai.svg"
+                src={logoSrc}
                 alt="AI Spectrum India - The Business of AI and Industry Transformation"
                 width={280}
                 height={60}
-                className="h-12 w-auto"
+                className="h-18 w-auto"
                 priority
               />
             </Link>
