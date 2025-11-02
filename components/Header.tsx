@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
@@ -82,6 +82,7 @@ export default function Header() {
   const [currentDate, setCurrentDate] = useState('')
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   // Format current date
   useEffect(() => {
@@ -110,6 +111,27 @@ export default function Header() {
       document.body.style.overflow = 'unset'
     }
   }, [mobileMenuOpen])
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setActiveDropdown(null)
+      }
+    }
+
+    if (activeDropdown) {
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside)
+      }
+    }
+  }, [activeDropdown])
+
+  // Toggle dropdown function
+  const toggleDropdown = (category: string) => {
+    setActiveDropdown(activeDropdown === category ? null : category)
+  }
 
   return (
     <header className="sticky top-0 z-50">
@@ -180,10 +202,10 @@ export default function Header() {
                 <div
                   key={category}
                   className="relative"
-                  onMouseEnter={() => setActiveDropdown(category)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  ref={activeDropdown === category ? dropdownRef : null}
                 >
                   <button
+                    onClick={() => toggleDropdown(category)}
                     className="px-4 py-2 text-sm font-semibold uppercase rounded-lg hover:bg-white/10 transition-all duration-200 flex items-center gap-1"
                     aria-expanded={activeDropdown === category}
                     aria-haspopup="true"
