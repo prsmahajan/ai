@@ -15,7 +15,7 @@ export default function FeaturedCard({ article, size = 'large' }: FeaturedCardPr
       aria-label={`Read article: ${article.title}`}
     >
       {/* Image */}
-      <div className="relative aspect-[3/2] rounded-lg overflow-hidden mb-4">
+      <div className="relative aspect-[3/2] overflow-hidden mb-3">
         <Image
           src={article.image}
           alt={article.title}
@@ -26,35 +26,16 @@ export default function FeaturedCard({ article, size = 'large' }: FeaturedCardPr
       </div>
 
       {/* Image Credit */}
-      <p className="text-xs text-gray-500 dark:text-gray-500 text-right mb-3">
+      <p className="text-xs text-gray-500 dark:text-gray-500 text-right mb-4">
         {article.imageCredit}
       </p>
 
-      {/* Category Badge (optional) */}
-      {article.category && (
-        <div className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">
-          {article.category}
-        </div>
-      )}
-
       {/* Headline */}
-      <h2 className={`font-bold leading-tight text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 ${
-        size === 'large' ? 'text-2xl md:text-3xl lg:text-4xl' : 'text-xl md:text-2xl lg:text-3xl'
+      <h2 className={`font-bold leading-tight text-gray-900 dark:text-white group-hover:underline transition-all duration-200 ${
+        size === 'large' ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'
       }`}>
         {article.title}
       </h2>
-
-      {/* Excerpt (optional) */}
-      {article.excerpt && (
-        <p className="text-base text-gray-600 dark:text-gray-400 mt-3 line-clamp-2">
-          {article.excerpt}
-        </p>
-      )}
-
-      {/* Date */}
-      <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">
-        {article.date}
-      </p>
     </Link>
   );
 }
