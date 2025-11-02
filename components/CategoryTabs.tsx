@@ -8,7 +8,7 @@ export default function CategoryTabs() {
 
   return (
     <nav
-      className="flex gap-6 border-b border-gray-200 dark:border-gray-800 pb-4 mb-8 overflow-x-auto scrollbar-hide"
+      className="flex gap-6 border-b border-gray-200 dark:border-gray-800 pb-3 mb-6 overflow-x-auto scrollbar-hide"
       role="navigation"
       aria-label="Content categories"
     >
