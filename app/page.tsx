@@ -1,9 +1,13 @@
-import FeaturedSection from '@/components/FeaturedSection';
+import FigmaGrid from '@/components/FigmaGrid';
+import NICEBanner from '@/components/NICEBanner';
+import NewsListSection from '@/components/NewsListSection';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
-      <FeaturedSection />
+      <FigmaGrid />
+      <NICEBanner />
+      <NewsListSection />
     </div>
   );
 }
